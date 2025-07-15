@@ -1,0 +1,101 @@
+/* Global styles */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #213547;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#app {
+  background-color: white;
+  min-height: 100vh;
+  color: #213547;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #213547;
+}
+
+/* Standardized button styles */
+button {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  border-color: #999;
+  background-color: #f8f8f8;
+}
+
+button:active {
+  background-color: #f0f0f0;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  border-color: #ccc;
+  background-color: transparent;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
+
+/* Special button types can override the base styles */
+button.primary {
+  border-color: #42b983;
+  color: #42b983;
+}
+
+button.primary:hover {
+  border-color: #369870;
+  color: #369870;
+  background-color: #f0f8f0;
+}
+
+button.danger {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+button.danger:hover {
+  border-color: #c0392b;
+  color: #c0392b;
+  background-color: #fdf0f0;
+}
