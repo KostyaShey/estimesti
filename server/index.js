@@ -8,8 +8,9 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: ['http://localhost:5174', 'https://estimesti.vercel.app'],
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   },
   // Force polling transport for Vercel compatibility
   transports: ['polling'],
@@ -20,10 +21,23 @@ const io = new Server(server, {
 app.use(
   cors({
     origin: ['http://localhost:5174', 'https://estimesti.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
 app.use(express.json());
+
+// Add a simple health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+});
+
+// Add request logging
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
+  next();
+});
 
 // In-memory session store
 const sessions = {};
