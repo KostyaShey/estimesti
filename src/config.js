@@ -6,12 +6,12 @@ const config = {
   apiUrl:
     import.meta.env.VITE_API_URL ||
     (isProduction && !isLocal
-      ? 'https://estimestiserver-k7gjw9ikg-kostyasheys-projects.vercel.app'
+      ? 'https://estimestiserver-lfmtraz7v-kostyasheys-projects.vercel.app'
       : 'http://localhost:3001'),
   socketUrl:
     import.meta.env.VITE_SOCKET_URL ||
     (isProduction && !isLocal
-      ? 'https://estimestiserver-k7gjw9ikg-kostyasheys-projects.vercel.app'
+      ? 'https://estimestiserver-lfmtraz7v-kostyasheys-projects.vercel.app'
       : 'http://localhost:3001'),
 };
 
