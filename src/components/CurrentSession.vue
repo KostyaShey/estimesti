@@ -99,6 +99,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
 import socket from '../socket';
+import config from '../config.js';
 
 const route = useRoute();
 const router = useRouter();
@@ -135,7 +136,7 @@ onMounted(() => {
     return;
   }
   // Fetch session data from backend
-  fetch(`http://localhost:3001/api/session/${sessionId}`)
+  fetch(`${config.apiUrl}/api/session/${sessionId}`)
     .then((res) => {
       if (!res.ok) throw new Error('Session not found');
       return res.json();

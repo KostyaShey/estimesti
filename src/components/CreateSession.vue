@@ -42,6 +42,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import socket from '../socket';
+import config from '../config.js';
 
 const router = useRouter();
 const yourName = ref('');
@@ -59,7 +60,7 @@ const createSession = async () => {
   const sessionId = Math.random().toString(36).substr(2, 8);
   const items = sessionItems.value.filter((item) => item.trim() !== '');
   // Call backend to create session and wait for response
-  const res = await fetch('http://localhost:3001/api/session', {
+  const res = await fetch(`${config.apiUrl}/api/session`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

@@ -23,6 +23,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import socket from '../socket';
+import config from '../config.js';
 
 const router = useRouter();
 const route = useRoute();
@@ -42,15 +43,13 @@ const joinSession = async () => {
     return;
   }
   // Check if session exists
-  const res = await fetch(
-    `http://localhost:3001/api/session/${sessionId.value}`
-  );
+  const res = await fetch(`${config.apiUrl}/api/session/${sessionId.value}`);
   if (res.status === 404) {
     errorMessage.value = 'Session ID does not exist.';
     return;
   }
   // Call backend to join session
-  await fetch('http://localhost:3001/api/session/join', {
+  await fetch(`${config.apiUrl}/api/session/join`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

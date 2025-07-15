@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router';
 import { ref, computed } from 'vue';
+import config from './config.js';
 const router = useRouter();
 const route = useRoute();
 const sessionCreator = ref('');
@@ -25,7 +26,7 @@ const removeSessionData = async () => {
     localStorage.removeItem(`session-users-${sessionId}`);
     localStorage.removeItem(`session-creator-${sessionId}`);
     // Remove session from backend
-    await fetch(`http://localhost:3001/api/session/${sessionId}`, {
+    await fetch(`${config.apiUrl}/api/session/${sessionId}`, {
       method: 'DELETE',
     });
     router.push('/');
