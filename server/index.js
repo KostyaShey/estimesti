@@ -35,7 +35,11 @@ app.get('/health', (req, res) => {
 
 // Add request logging
 app.use((req, res, next) => {
-  console.log(`${new Date().toISOString()} ${req.method} ${req.url} - Origin: ${req.headers.origin}`);
+  console.log(
+    `${new Date().toISOString()} ${req.method} ${req.url} - Origin: ${
+      req.headers.origin
+    }`
+  );
   next();
 });
 
