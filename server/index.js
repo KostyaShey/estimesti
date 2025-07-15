@@ -9,7 +9,12 @@ const io = new Server(server, {
   cors: {
     origin: ['http://localhost:5174', 'https://estimesti.vercel.app'],
     methods: ['GET', 'POST'],
+    credentials: true,
   },
+  // Force polling transport for Vercel compatibility
+  transports: ['polling'],
+  // Allow upgrades for development
+  allowUpgrades: false,
 });
 
 app.use(
