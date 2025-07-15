@@ -3,7 +3,7 @@ const isProduction = import.meta.env.PROD;
 const isLocal = window.location.hostname === 'localhost';
 
 // Use the deployed backend URL directly for production
-const PRODUCTION_BACKEND_URL = 'https://estimestiserver-lfmtraz7v-kostyasheys-projects.vercel.app';
+const PRODUCTION_BACKEND_URL = 'https://estimestiserver-7i9q7cazu-kostyasheys-projects.vercel.app';
 
 const config = {
   apiUrl:
