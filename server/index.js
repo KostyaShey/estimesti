@@ -5,22 +5,34 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+
+// Detect if running on Vercel (serverless environment)
+const isVercel = process.env.VERCEL === '1';
+
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5174', 'https://estimesti.vercel.app'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'https://estimesti.vercel.app',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
   },
-  // Force polling transport for Vercel compatibility
-  transports: ['polling'],
+  // Use polling for Vercel, allow all transports for local development
+  transports: isVercel ? ['polling'] : ['websocket', 'polling'],
   // Allow upgrades for development
-  allowUpgrades: false,
+  allowUpgrades: !isVercel,
 });
 
 app.use(
   cors({
-    origin: ['http://localhost:5174', 'https://estimesti.vercel.app'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'https://estimesti.vercel.app',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
